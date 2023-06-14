@@ -15,5 +15,8 @@ export default {
             allowNull: false,
           }
         })
-    }
+    },
+  down(queryInterface:QueryInterface){
+    return queryInterface.dropTable('teams');
+  },
 }
