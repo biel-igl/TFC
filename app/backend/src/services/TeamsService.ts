@@ -1,4 +1,3 @@
-import { NewEntity } from '../Interfaces';
 import { ITeams } from '../Interfaces/Teams/ITeams';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import { ITeamsModel } from '../Interfaces/Teams/ITeamsModel';
@@ -8,11 +7,6 @@ export default class TeamsService {
   constructor(
     private teamsModel: ITeamsModel = new TeamModel(),
   ) {}
-
-  public async createTeam(team:NewEntity<ITeams>): Promise<ServiceResponse<ITeams>> {
-    const newTeam = await this.teamsModel.create(team);
-    return { status: 'SUCCESSFUL', data: newTeam };
-  }
 
   public async getAllTeams(): Promise<ServiceResponse<ITeams[]>> {
     const allTeams = await this.teamsModel.findAll();

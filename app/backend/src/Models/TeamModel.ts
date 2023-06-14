@@ -1,10 +1,10 @@
-import SequelizeTeam from '../database/models/SequelizeTeam';
+import TeamsModel from '../database/models/TeamsModel';
 import { ITeamsModel } from '../Interfaces/Teams/ITeamsModel';
 import { ITeams } from '../Interfaces/Teams/ITeams';
 import { NewEntity } from '../Interfaces';
 
 export default class TeamModel implements ITeamsModel {
-  private model = SequelizeTeam;
+  private model = TeamsModel;
   async create(data: NewEntity<ITeams>): Promise<ITeams> {
     const dbData = await this.model.create(data);
     const { id, teamName }: ITeams = dbData;

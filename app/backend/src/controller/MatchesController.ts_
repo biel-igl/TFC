@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+/* import { Request, Response } from 'express';
 import mapStatusHTTP from '../utils/mapStatusHTTP';
 import MatchesService from '../services/MatchesService';
 
@@ -18,3 +18,4 @@ export default class MetchesController {
     return res.status(200).json(serviceResponse.data);
   }
 }
+ */
