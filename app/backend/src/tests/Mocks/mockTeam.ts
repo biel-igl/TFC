@@ -1,71 +1,71 @@
 export const teams = [
     {
       id: 1,
-      teamname: 'Avaí/Kindermann',
+      teamName: 'Avaí/Kindermann',
     },
     {
       id: 2,
-      teamname: 'Bahia',
+      teamName: 'Bahia',
     },
     {
       id: 3,
-      teamname: 'Botafogo',
+      teamName: 'Botafogo',
     },
     {
       id: 4,
-      teamname: 'Corinthians',
+      teamName: 'Corinthians',
     },
     {
       id: 5,
-      teamname: 'Cruzeiro',
+      teamName: 'Cruzeiro',
     },
     {
       id: 6,
-      teamname: 'Ferroviária',
+      teamName: 'Ferroviária',
     },
     {
       id: 7,
-      teamname: 'Flamengo',
+      teamName: 'Flamengo',
     },
     {
       id: 8,
-      teamname: 'Grêmio',
+      teamName: 'Grêmio',
     },
     {
       id: 9,
-      teamname: 'Internacional',
+      teamName: 'Internacional',
     },
     {
       id: 10,
-      teamname: 'Minas Brasília',
+      teamName: 'Minas Brasília',
     },
     {
       id: 11,
-      teamname: 'Napoli-SC',
+      teamName: 'Napoli-SC',
     },
     {
       id: 12,
-      teamname: 'Palmeiras',
+      teamName: 'Palmeiras',
     },
     {
       id: 13,
-      teamname: 'Real Brasília',
+      teamName: 'Real Brasília',
     },
     {
       id: 14,
-      teamname: 'Santos',
+      teamName: 'Santos',
     },
     {
       id: 15,
-      teamname: 'São José-SP',
+      teamName: 'São José-SP',
     },
     {
       id: 16,
-      teamname: 'São Paulo',
+      teamName: 'São Paulo',
     },
   ];
   
   export const team = {
     "id": 1,
-    "teamname": "Avaí/Kindermann"
+    "teamName": "Avaí/Kindermann"
   }
