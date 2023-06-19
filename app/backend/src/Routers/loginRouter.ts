@@ -6,6 +6,6 @@ import ValidateToken from '../Middlewares/ValidateToken';
 const login = new LoginController();
 const loginRouter = Router();
 
+loginRouter.get('/role', ValidateToken.Token, (req, res) => login.getRole(req, res));
 loginRouter.post('/', ValidateLogin.Login, (req, res) => login.login(req, res));
-loginRouter.get('/role', ValidateToken.Token);
 export default loginRouter;

@@ -27,4 +27,9 @@ export default class UsersService {
     const token = await this.token.generate(user);
     return { status: 'SUCCESSFUL', data: { token } };
   }
+
+  public async getRole(id: number): Promise<ServiceResponse<{ role: string | undefined }>> {
+    const user = await this.usersModel.findById(id);
+    return { status: 'SUCCESSFUL', data: { role: user?.role } };
+  }
 }

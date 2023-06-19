@@ -7,7 +7,7 @@ export default class ValidateToken {
     if (!token) return res.status(401).json({ message: 'Token not found' });
     const jwt = new TokenJwtService();
     try {
-      jwt.verify(token, 'SECRET');
+      req.body.token = jwt.verify(token);
     } catch (error) {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }

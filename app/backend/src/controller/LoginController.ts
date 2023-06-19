@@ -14,11 +14,12 @@ export default class LoginController {
     return res.status(200).json(serviceResponse.data);
   }
 
-  /* public async getTeamsById(req: Request, res: Response):Promise<Response> {
-    const serviceResponse = await this.usersService.getTeamsById(Number(req.params.id));
+  public async getRole(req: Request, res: Response):Promise<Response> {
+    const { id } = req.body.token;
+    const serviceResponse = await this.usersService.getRole(id);
     if (serviceResponse.status !== 'SUCCESSFUL') {
       return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
     }
     return res.status(200).json(serviceResponse.data);
-  } */
+  }
 }

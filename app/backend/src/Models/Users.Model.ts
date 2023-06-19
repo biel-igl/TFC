@@ -9,4 +9,10 @@ export default class UserModel implements IUsersModel {
     if (!user) return null;
     return user;
   }
+
+  async findById(id: number): Promise<IUsers | null> {
+    const user = await this.model.findOne({ where: { id } });
+    if (!user) return null;
+    return user;
+  }
 }
