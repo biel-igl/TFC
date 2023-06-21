@@ -2,6 +2,7 @@ import TeamsModel from '../database/models/TeamsModel';
 import { IMatches } from '../Interfaces/Matches/IMatches';
 import { IMatchesModel } from '../Interfaces/Matches/IMatchesModel';
 import MatchesModel from '../database/models/MatchesModel';
+import { NewEntity } from '../Interfaces';
 
 export default class MatchModel implements IMatchesModel {
   private model = MatchesModel;
@@ -33,5 +34,13 @@ export default class MatchModel implements IMatchesModel {
   async updateMatch(id: number, goals: number[]): Promise<void> {
     await this.model.update({ homeTeamGoals: goals[0],
       awayTeamGoals: goals[1] }, { where: { id } });
+  }
+
+  async createNewMatch(data: NewEntity<IMatches>): Promise<IMatches> {
+    const dbData = await this.model.create({ ...data, inProgress: true });
+    const {
+      id, homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress,
+    }:IMatches = dbData;
+    return { id, homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress };
   }
 }

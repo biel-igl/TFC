@@ -26,4 +26,10 @@ export default class MetchesController {
     await this.matchesService.updateMatch(Number(id), [homeTeamGoals, awayTeamGoals]);
     return res.status(200).json({ message: 'GOOOOOLLL!!!!' });
   }
+
+  public async createNewMatch(req: Request, res: Response):Promise<Response> {
+    const { body } = req;
+    const serviceResponse = await this.matchesService.createNewMatch(body);
+    return res.status(201).json(serviceResponse.data);
+  }
 }
