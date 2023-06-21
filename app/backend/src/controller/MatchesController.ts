@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import MatchesService from '../services/MatchesService';
+import mapStatusHTTP from '../utils/mapStatusHTTP';
 
 export default class MetchesController {
   constructor(private matchesService = new MatchesService()) {}
@@ -30,6 +31,9 @@ export default class MetchesController {
   public async createNewMatch(req: Request, res: Response):Promise<Response> {
     const { body } = req;
     const serviceResponse = await this.matchesService.createNewMatch(body);
+    if (serviceResponse.status !== 'SUCCESSFUL') {
+      return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
+    }
     return res.status(201).json(serviceResponse.data);
   }
 }

@@ -24,6 +24,10 @@ export default class MatchesService {
 
   public async createNewMatch(match: NewEntity<IMatches>): Promise<ServiceResponse<IMatches>> {
     const newMatch = await this.matchesModel.createNewMatch(match);
+    if (!newMatch) {
+      return {
+        status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
+    }
     return { status: 'SUCCESSFUL', data: newMatch };
   }
 }

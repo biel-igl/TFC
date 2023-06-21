@@ -36,7 +36,10 @@ export default class MatchModel implements IMatchesModel {
       awayTeamGoals: goals[1] }, { where: { id } });
   }
 
-  async createNewMatch(data: NewEntity<IMatches>): Promise<IMatches> {
+  async createNewMatch(data: NewEntity<IMatches>): Promise<IMatches | null> {
+    const home = await TeamsModel.findByPk(data.homeTeamId);
+    const away = await TeamsModel.findByPk(data.awayTeamId);
+    if (!home || !away) return null;
     const dbData = await this.model.create({ ...data, inProgress: true });
     const {
       id, homeTeamId, homeTeamGoals, awayTeamId, awayTeamGoals, inProgress,
