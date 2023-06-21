@@ -26,9 +26,12 @@ export default class MatchModel implements IMatchesModel {
     return result;
   }
 
-  /* async findById(id: number): Promise<IUsers | null> {
-    const user = await this.model.findOne({ where: { id } });
-    if (!user) return null;
-    return user;
-  } */
+  async update(id: number): Promise<void> {
+    await this.model.update({ inProgress: false }, { where: { id } });
+  }
+
+  async updateMatch(id: number, goals: number[]): Promise<void> {
+    await this.model.update({ homeTeamGoals: goals[0],
+      awayTeamGoals: goals[1] }, { where: { id } });
+  }
 }
