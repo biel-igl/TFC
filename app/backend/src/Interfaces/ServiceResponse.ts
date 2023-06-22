@@ -12,4 +12,12 @@ export type ServiceResponseSuccess<T> = {
   data: T,
 };
 
-export type ServiceResponse<T> = ServiceResponseError | ServiceResponseSuccess<T>;
+export type ServiceResponseUpdate<T> = {
+  status: 'UPDATE',
+  data: T,
+};
+
+export type ServiceResponse<T> =
+  ServiceResponseError
+  | ServiceResponseSuccess<T>
+  | ServiceResponseUpdate<T>;

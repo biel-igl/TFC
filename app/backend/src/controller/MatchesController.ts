@@ -9,10 +9,10 @@ export default class MetchesController {
     const { inProgress } = req.query;
     if (inProgress) {
       const serviceResponse = await this.matchesService.getAllMatches(inProgress === 'true');
-      return res.status(200).json(serviceResponse.data);
+      return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
     }
     const serviceResponse = await this.matchesService.getAllMatches(null);
-    return res.status(200).json(serviceResponse.data);
+    return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
 
   public async finishMatch(req: Request, res: Response):Promise<Response> {
@@ -31,9 +31,6 @@ export default class MetchesController {
   public async createNewMatch(req: Request, res: Response):Promise<Response> {
     const { body } = req;
     const serviceResponse = await this.matchesService.createNewMatch(body);
-    if (serviceResponse.status !== 'SUCCESSFUL') {
-      return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
-    }
-    return res.status(201).json(serviceResponse.data);
+    return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
   }
 }

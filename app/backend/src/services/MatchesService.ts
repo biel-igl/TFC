@@ -28,6 +28,6 @@ export default class MatchesService {
       return {
         status: 'NOT_FOUND', data: { message: 'There is no team with such id!' } };
     }
-    return { status: 'SUCCESSFUL', data: newMatch };
+    return { status: 'UPDATE', data: newMatch };
   }
 }
