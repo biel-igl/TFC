@@ -5,7 +5,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import UsersModel from '../database/models/UsersModel';
-import { user, userWithoutEmail, userWithoutPassword, mockToken, mockTokenWrong } from './Mocks/mockUser';
+import { user, userWithoutEmail, userWithoutPassword, mockToken, mockTokenWrong, userPasswordWrong } from './Mocks/mockUser';
 
 chai.use(chaiHttp);
 
@@ -27,6 +27,19 @@ describe('Users test', () => {
         const httpResponse = await chai.request(app).post('/login').send(userWithoutPassword)
         expect(httpResponse.status).to.equal(400);
         expect(httpResponse.body).to.be.deep.equal({ message: 'All fields must be filled' });
+      });
+      it('caso passe a senha errada',async () => {
+        const httpResponse = await chai.request(app).post('/login').send(userPasswordWrong)
+        expect(httpResponse.status).to.equal(401);
+        expect(httpResponse.body).to.be.deep.equal({ message: 'Invalid email or password' });
+      });
+      it('caso passe o user errado',async () => {
+        const httpResponse = await chai.request(app).post('/login').send({
+          email: 'invalid.user@user.com',
+          password: 'secret_user'
+      });
+        expect(httpResponse.status).to.equal(401);
+        expect(httpResponse.body).to.be.deep.equal({ message: 'Invalid email or password' });
       });
   });
 
