@@ -12,6 +12,11 @@ export const userWithoutPassword = {
     "email": 'user@user.com'
 }
 
+export const userPasswordWrong = {
+    "email": 'user@user.com',
+    "password": "secret_use"
+}
+
 export const mockToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjg3MjE3MzA0fQ.F1A6bQ_YWvmkCPFLh2gdya_iWt34BSg0fpnHaMA23bg'
 
 export const mockTokenWrong ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjg3MjE3MzA0fQ.F1A6bQ_YWvmkCPFLh2gdya_iWt34BSg0fpnHaMA23b'

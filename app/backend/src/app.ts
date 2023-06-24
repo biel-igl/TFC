@@ -14,6 +14,7 @@ class App {
     this.app.use('/teams', router.teamsRouter);
     this.app.use('/login', router.loginRouter);
     this.app.use('/matches', router.matchesRouter);
+    this.app.use('/leaderboard', router.leaderboardRouter);
   }
 
   private config():void {
